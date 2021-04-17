@@ -23,6 +23,7 @@ client.connect((err) => {
   const admininfoCollection = client.db("cleanDB").collection("admininfo");
   const serviceCollection = client.db("cleanDB").collection("service");
   const orderCollection = client.db("cleanDB").collection("orders");
+  const reviewCollection = client.db("cleanDB").collection("reviews");
     
   app.post("/createAdmin", (req, res) => {
     const newAdmin = req.body;
@@ -116,6 +117,23 @@ client.connect((err) => {
     app.post('/setOrderStatus', (req, res) => {
       const data = req.body;
       console.log(data);
+    })
+
+    // add review
+    app.post('/add-review', (req, res) => {
+      const reviewData = req.body;
+      reviewCollection.insertOne(reviewData)
+      .then((result) => {
+        res.send(result.insertedCount > 0 )
+      })
+    } )
+
+    // get all review
+    app.get('/reviews', (req, res) => {
+      reviewCollection.find({})
+      .toArray((err, documents) =>  {
+        res.send(documents)
+      })
     })
   
  
