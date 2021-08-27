@@ -38,7 +38,7 @@ connectWithDB();
 app.use('/review', routes.reviewRoute);
 
 // service routes
-// app.use('/service', routes.serviceRoute);
+app.use('/service', routes.serviceRoute);
 
 // auth routes
 app.use('/auth', (req, res) => {
