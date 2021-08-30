@@ -6,7 +6,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true,
     },
-    photoUrl: String,
+    password: String,
+    userRole: {
+        type: String,
+        default: 'user',
+    },
+    photoUrl: {
+        type: String,
+        default: null,
+    },
     status: {
         type: String,
         default: 'active',

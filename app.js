@@ -6,8 +6,9 @@ import routes from './routes';
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 
+// custom error handler middleware
 const errorHandler = (err, req, res, next) => {
     if (err) {
         res.status(500).json({
@@ -41,9 +42,7 @@ app.use('/review', routes.reviewRoute);
 app.use('/service', routes.serviceRoute);
 
 // auth routes
-app.use('/auth', (req, res) => {
-    res.send('auth routes');
-});
+app.use('/auth', routes.userRoute);
 
 // error handling middleware
 app.use(errorHandler);
