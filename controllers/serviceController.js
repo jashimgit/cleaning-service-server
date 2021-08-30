@@ -20,10 +20,10 @@ export const getAllService = async (req, res) => {
 
 export const getSingleService = async (req, res) => {
     try {
-        const data = await Service.find({ _id: req.params.id });
+        const service = await Service.findById({ _id: req.params.id });
         res.status(200).json({
             message: 'success',
-            data,
+            service,
         });
     } catch (err) {
         res.status(500).json({

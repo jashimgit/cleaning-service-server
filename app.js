@@ -40,6 +40,9 @@ app.use('/review', routes.reviewRoute);
 
 // service routes
 app.use('/service', routes.serviceRoute);
+// order routes
+
+app.use('/order', routes.orderRoute)
 
 // auth routes
 app.use('/auth', routes.userRoute);
