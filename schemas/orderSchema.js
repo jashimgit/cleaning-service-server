@@ -7,10 +7,10 @@ const orderSchema = new mongoose.Schema({
     quantity: Number,
     customerEmail: {
         type: String,
-        default: 'user@example.com'
+        default: 'user@example.com',
     },
     orderTime: String,
-    status: String,
+    status: { type: String },
 });
 
 export default orderSchema;

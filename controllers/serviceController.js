@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import models from '../models';
 
 const { Service } = models;
@@ -47,4 +48,8 @@ export const addNewService = async (req, res) => {
             message: error.message,
         });
     }
+};
+export const deleteSingleService = async (req, res) => {
+    // console.log(req.body, req.params.id);
+    await Service.findOneAndDelete(req.params.id);
 };

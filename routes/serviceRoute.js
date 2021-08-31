@@ -1,5 +1,12 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable comma-dangle */
 import express from 'express';
-import { addNewService, getAllService, getSingleService } from '../controllers/serviceController';
+import {
+    addNewService,
+    deleteSingleService,
+    getAllService,
+    getSingleService
+} from '../controllers/serviceController';
 
 const router = express.Router();
 
@@ -13,5 +20,6 @@ router.get('/:id', getSingleService);
 router.post('/', addNewService);
 
 // update single service// delete single service
+router.delete('/:id', deleteSingleService);
 
 export default router;

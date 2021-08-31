@@ -7,7 +7,6 @@ import models from '../models';
 const { User } = models;
 // http://localhost:8000/auth/login
 export const login = async (req, res) => {
-    // console.log(req.body);
     const { email, password } = req.body;
     try {
         const user = await User.findOne({ email }).select('-__v');

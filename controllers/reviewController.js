@@ -20,7 +20,7 @@ export const getAllReview = async (req, res) => {
 export const addNewReview = async (req, res) => {
     try {
         const data = req.body;
-        // console.log(data);
+
         const review = new Review(data);
         await review.save();
         res.status(200).json({

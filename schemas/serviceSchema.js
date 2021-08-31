@@ -5,7 +5,7 @@ const serviceSchema = new mongoose.Schema({
     price: String,
     status: String,
     imageUrl: String,
-    details: String,
+    details: { type: String, max: 80 },
 });
 
 export default serviceSchema;
