@@ -5,7 +5,7 @@ import {
     changeOrderStatus,
     getAllOrder,
     // eslint-disable-next-line comma-dangle
-    getOrderById
+    getOrderById, getPendingOrders
 } from '../controllers/orderController';
 
 const router = express.Router();
@@ -18,5 +18,7 @@ router.get('/:id', getOrderById);
 // router.put('/:id', updateSingleOrder);
 // router.delete('/:id', deleteOrder);
 router.put('/:id', changeOrderStatus);
+
+router.get('/pending', getPendingOrders);
 
 export default router;

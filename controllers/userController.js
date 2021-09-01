@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import models from '../models';
 
 const { User } = models;
-// http://localhost:8000/auth/login
+// https://clean-server.herokuapp.com/auth/login
 export const login = async (req, res) => {
     const { email, password } = req.body;
     try {

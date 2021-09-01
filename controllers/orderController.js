@@ -60,8 +60,30 @@ export const getOrderById = async (req, res) => {
 export const changeOrderStatus = async (req, res) => {
     const status = req.body;
     const { id } = req.params;
-    // console.log(id, status);
-    // Model.findByIdAndUpdate(id, { name: 'jason bourne' }, options, callback)
-    const updatedData = await Order.findByIdAndUpdate(req.params.id, { status }, { new: true });
-    console.log(updatedData);
+    try {
+        const updatedStatus = await Order.findOneAndUpdate({ _id: id }, req.body, {
+            new: true,
+        });
+
+        res.status(200).json({
+            data: updatedStatus,
+        });
+    } catch (err) {
+        res.status(500).json({
+            message: 'server side error',
+        });
+    }
+};
+
+export const getPendingOrders = async (req, res) => {
+    try {
+        const pending = await Order.find({ status: 'pending' });
+        res.status(200).json({
+            count: pending.length,
+        });
+    } catch (err) {
+        res.status(500).json({
+            message: 'server error!',
+        });
+    }
 };
